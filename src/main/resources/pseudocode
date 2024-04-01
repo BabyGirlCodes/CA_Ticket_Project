@@ -1,0 +1,65 @@
+PriorityQueue (LinkedList-Based) Pseudocode and Explanation -Banjo Maryam
+
+Stored Type: Ticket
+
+Class Components:
+- Node head (points to the start of the linked list)
+- Integer size (tracks number of elements)
+- Node contains: Ticket data, Node next
+
+Method: size()
+// Pseudocode
+RETURN size
+// Explanation
+Returns the number of tickets currently in the queue.
+
+Method: isEmpty()
+// Pseudocode
+IF size == 0 THEN
+    RETURN true
+ELSE
+    RETURN false
+// Explanation
+Checks whether the queue is empty by comparing size to 0.
+
+Method: clear()
+// Pseudocode
+SET head to null
+SET size to 0
+// Explanation
+Clears the queue by setting the head pointer to null and resetting size.
+
+Method: peek()
+// Pseudocode
+IF head is null THEN
+    RETURN null
+RETURN head.data
+// Explanation
+Returns the highest priority ticket (which is at the head of the list).
+
+Method: add(ticket)
+// Pseudocode
+CREATE newNode with ticket
+IF head is null OR ticket has higher priority than head.data THEN
+    SET newNode.next = head
+    SET head = newNode
+ELSE
+    SET current = head
+    WHILE current.next != null AND current.next.ticket has higher or equal priority than ticket DO
+        SET current = current.next
+    SET newNode.next = current.next
+    SET current.next = newNode
+INCREMENT size
+// Explanation
+Inserts the ticket in sorted order so that the highest priority is always at the front.
+
+Method: remove()
+// Pseudocode
+IF head is null THEN
+    RETURN null
+SET removedTicket = head.data
+SET head = head.next
+DECREMENT size
+RETURN removedTicket
+// Explanation
+Removes and returns the ticket at the front of the queue, which has the highest priority.
