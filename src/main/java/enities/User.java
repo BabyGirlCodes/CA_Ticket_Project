@@ -1,3 +1,5 @@
+package enities;
+
 import java.util.Objects;
 
 /**
@@ -9,7 +11,7 @@ public class User {
     private String password;
 
     /**
-     * Constructs a new User with the specific username and password.
+     * Constructs a new enities.User with the specific username and password.
      *
      * @param username The unique username of the user.
      * @param password The password of the user.
@@ -38,7 +40,7 @@ public class User {
     }
 
     /**
-     * Determines if two User objects are equal based on their usernames.
+     * Determines if two enities.User objects are equal based on their usernames.
      *
      * @param obj The object to compare with this user.
      * @return true if the usernames match; false otherwise.
@@ -52,7 +54,7 @@ public class User {
     }
 
     /**
-     * Generates a hash code for the User object
+     * Generates a hash code for the enities.User object
      * that incorporates the username and password fields.
      * to reduce the chances of hash collisions.
      *
@@ -74,6 +76,6 @@ public class User {
      */
     @Override
     public String toString() {
-        return "User{" + "username='" + username + '\'' + '}';
+        return "enities.User{" + "username='" + username + '\'' + '}';
     }
 }

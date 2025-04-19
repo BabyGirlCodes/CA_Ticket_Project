@@ -1,3 +1,5 @@
+package enities;
+
 import java.util.Objects;
 
 /**
@@ -13,10 +15,10 @@ public class Agent extends User {
     private Object closedTickets;
 
     /**
-     * Constructs a new Agent with the given user credentials and agent-specific details.
+     * Constructs a new enities.Agent with the given user credentials and agent-specific details.
      *
-     * @param username   The agent's username (inherited from User).
-     * @param password   The agent's password (inherited from User).
+     * @param username   The agent's username (inherited from enities.User).
+     * @param password   The agent's password (inherited from enities.User).
      * @param agentId    The unique ID for the agent.
      * @param agentName  The full name of the agent.
      */
@@ -47,7 +49,7 @@ public class Agent extends User {
     }
 
     /**
-     * Determines equality between two Agent objects based on their agent ID.
+     * Determines equality between two enities.Agent objects based on their agent ID.
      *
      * @param obj The object to compare with this agent.
      * @return true if the agent IDs match; false otherwise.
@@ -61,7 +63,7 @@ public class Agent extends User {
     }
 
     /**
-     * Generates a hash code for the Agent using a custom formula
+     * Generates a hash code for the enities.Agent using a custom formula
      * that includes the agentId and agentName fields.
      * This reduces the chances of hash collisions.
      *
@@ -76,12 +78,12 @@ public class Agent extends User {
     }
 
     /**
-     * Returns a string representation of the Agent.
+     * Returns a string representation of the enities.Agent.
      *
      * @return A formatted string with agent ID and name.
      */
     @Override
     public String toString() {
-        return "Agent{" + "ID='" + agentId + "', name='" + agentName + "'}";
+        return "enities.Agent{" + "ID='" + agentId + "', name='" + agentName + "'}";
     }
 }
