@@ -69,6 +69,9 @@ public class Ticket implements Comparable<Ticket> {
         return priorityLevel;
     }
 
+    /**
+     * @return Gets the creation date of the ticket
+     */
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
