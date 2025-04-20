@@ -41,6 +41,62 @@ public class PriorityQueue {
     public boolean isEmpty() {
         return size == 0;
     }
+    /**
+     * Removes all tickets from the queue.
+     */
+    public void clear() {
+        head = null;
+        size = 0;
+    }
+
+    /**
+     * Returns the highest-priority ticket without removing it.
+     * @return top ticket or null if empty
+     */
+    public Ticket peek() {
+        if (head == null) {
+            return null;
+        }
+        return head.data;
+    }
+
+    /**
+     * Adds a new ticket to the queue based on its priority.
+     * @param ticket the Ticket to be added
+     */
+    public void add(Ticket ticket) {
+        Node newNode = new Node(ticket);
+
+        // Insert at front if head is null or ticket has higher priority
+        if (head == null || ticket.compareTo(head.data) > 0) {
+            newNode.next = head;
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null && ticket.compareTo(current.next.data) <= 0) {
+                current = current.next;
+            }
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+
+        size++;
+    }
+
+    /**
+     * Removes and returns the highest-priority ticket.
+     * @return the removed ticket or null if empty
+     */
+    public Ticket remove() {
+        if (head == null) {
+            return null;
+        }
+
+        Ticket removedTicket = head.data;
+        head = head.next;
+        size--;
+        return removedTicket;
+    }
 
 
 }
