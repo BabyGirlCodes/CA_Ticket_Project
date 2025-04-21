@@ -67,7 +67,6 @@ public class PriorityQueue {
     public void add(Ticket ticket) {
         Node newNode = new Node(ticket);
 
-        // Insert at front if head is null or ticket has higher priority
         if (head == null || ticket.compareTo(head.data) > 0) {
             newNode.next = head;
             head = newNode;
@@ -79,8 +78,8 @@ public class PriorityQueue {
             newNode.next = current.next;
             current.next = newNode;
         }
-
         size++;
+
     }
 
     /**

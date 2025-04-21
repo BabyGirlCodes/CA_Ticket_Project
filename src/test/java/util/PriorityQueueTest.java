@@ -39,19 +39,20 @@ class PriorityQueueTest {
     void testAdd_HighestPriorityFirst() {
         // SET UP:
         PriorityQueue queue = new PriorityQueue();
-        LocalDateTime now = LocalDateTime.now();
-
-        Ticket t1 = new Ticket("1", "Low", 1, now, "user", null, "Pending");
-        Ticket t2 = new Ticket("2", "High", 5, now, "user", null, "Pending");
+        LocalDateTime date = LocalDateTime.of(2024, 1, 1, 10, 0);
+        Ticket t1 = new Ticket("1", "Low", 1, date, "user", null, "Pending");
+        Ticket t2 = new Ticket("2", "High", 5, date, "user", null, "Pending");
 
         // LOGIC:
         queue.add(t1);
         queue.add(t2);
+
+
         Ticket actual = queue.peek();
         String actualId = actual.getTicketId();
 
         // EXPECTED:
-        String expectedId = "2";  // ticket with higher priority should be at the head
+        String expectedId = "2";
 
         // ASSERTIONS:
         assertEquals(expectedId, actualId, "Highest priority ticket should be at the head");
@@ -93,25 +94,28 @@ class PriorityQueueTest {
             assertNull(queue.remove(), "Remove should return null when the queue is empty");
         }
 
-        @Test
-        void testSamePriorityOrder_UsesInsertionOrder() {
-            // SET UP:
-            PriorityQueue queue = new PriorityQueue();
-            LocalDateTime now = LocalDateTime.now();
-            Ticket t1 = new Ticket("1", "P3", 3, now, "user1", null, "Pending");
-            Ticket t2 = new Ticket("2", "P3", 3, now.plusSeconds(1), "user2", null, "Pending");
+    @Test
+    void testSamePriorityOrder_UsesInsertionOrder() {
+        // SET UP:
+        PriorityQueue queue = new PriorityQueue();
 
-            queue.add(t1);
-            queue.add(t2);
+        LocalDateTime now = LocalDateTime.now();
+        Ticket t1 = new Ticket("1", "P3", 3, now, "user1", null, "Pending");
+        Ticket t2 = new Ticket("2", "P3", 3, now, "user2", null, "Pending"); // later
 
-            // LOGIC:
-            Ticket firstOut = queue.remove();
+        queue.add(t1); // created earlier
+        queue.add(t2); // created later
 
-            // ASSERTIONS:
-            assertEquals("1", firstOut.getTicketId(), "When priorities match, insertion order should be preserved");
-        }
+        // LOGIC:
+        Ticket actual = queue.remove();
 
-        @Test
+        // ASSERTIONS:
+        String expected = "1";
+        assertEquals(expected, actual.getTicketId(), "When priorities match, the earlier ticket should come first.");
+    }
+
+
+    @Test
         void testClear() {
             // SET UP:
             PriorityQueue queue = new PriorityQueue();

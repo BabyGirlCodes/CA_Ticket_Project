@@ -175,24 +175,35 @@ public class Ticket implements Comparable<Ticket> {
      */
     @Override
     public int compareTo(Ticket other) {
-        if (this.priorityLevel != other.priorityLevel) {
-            return Integer.compare(other.priorityLevel, this.priorityLevel); // higher priority first
+        // Compare by priority first
+        int priorityComparison = Integer.compare(this.priorityLevel, other.priorityLevel);
+        if (priorityComparison != 0) {
+            return priorityComparison;
         }
-        return this.creationDate.compareTo(other.creationDate); // older first
+        // If priorities are the same, compare by creation time (earlier first)
+        return this.creationDate.compareTo(other.creationDate);
     }
+
 
     /**
      * Tickets are equal if their ticket IDs match.
      *
-     * @param obj The object to compare.
+     * @param o The object to compare.
      * @return true if equal, false otherwise.
      */
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Ticket)) return false;
-        Ticket other = (Ticket) obj;
-        return this.ticketId.equals(other.ticketId);
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (this.getClass() != o.getClass()) {
+            return false;
+        }
+
+        Ticket other = (Ticket) o;
+
+        // Two tickets are equal if their ticketId values match
+        return Objects.equals(this.ticketId, other.ticketId);
     }
 
     /**
