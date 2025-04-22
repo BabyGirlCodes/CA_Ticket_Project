@@ -1,9 +1,7 @@
 package util;
 
-import util.DynamicArray;
-
 /**
- * A custom implementation of a generic HashMap using collision chaining with DynamicArray.
+ * An implementation of a HashMap using collision chaining with DynamicArray.
  *
  * @param <K> the type of keys
  * @param <V> the type of values
