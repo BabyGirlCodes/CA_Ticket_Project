@@ -1,6 +1,6 @@
 package util;
 
-import enities.Ticket;
+import entities.Ticket;
 
 /**
  * A custom PriorityQueue that stores Ticket objects in descending order

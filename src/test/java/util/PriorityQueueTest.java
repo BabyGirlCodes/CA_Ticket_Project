@@ -1,6 +1,6 @@
 package util;
 
-import enities.Ticket;
+import entities.Ticket;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
