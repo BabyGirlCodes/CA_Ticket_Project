@@ -40,6 +40,10 @@ public class MainMenu {
         saveData();
         System.out.println("👋 Exiting. Goodbye!");
     }
+    public static DynamicArray<Ticket> getTickets() {
+        return tickets;
+    }
+
 
     private static String handleLogin() {
         while (true) {
