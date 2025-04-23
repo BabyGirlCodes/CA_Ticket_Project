@@ -43,6 +43,10 @@ public class MainMenu {
     public static DynamicArray<Ticket> getTickets() {
         return tickets;
     }
+    public static util.HashMap<String, entities.Agent> getAgents() {
+        return agents;
+    }
+
 
 
     private static String handleLogin() {
