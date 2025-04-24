@@ -10,8 +10,18 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Utility class for handling file operations related to users, agents, and tickets.
+ * Provides methods for reading and writing data to/from files.
+ */
 public class fileUtil {
 
+    /**
+     * Reads user data from a file and returns an array of User objects.
+     *
+     * @param filename the name of the file to read from
+     * @return an array of User objects read from the file
+     */
     public static User[] readUsers(String filename) {
         User[] result;
         try {
@@ -37,6 +47,12 @@ public class fileUtil {
         return result;
     }
 
+    /**
+     * Reads agent data from a file and returns an array of Agent objects.
+     *
+     * @param filename the name of the file to read from
+     * @return an array of Agent objects read from the file
+     */
     public static Agent[] readAgents(String filename) {
         Agent[] result;
         try {
@@ -62,6 +78,12 @@ public class fileUtil {
         return result;
     }
 
+    /**
+     * Reads ticket data from a file and returns an array of Ticket objects.
+     *
+     * @param filename the name of the file to read from
+     * @return an array of Ticket objects read from the file
+     */
     public static Ticket[] readTickets(String filename) {
         Ticket[] result;
         try {
@@ -88,6 +110,12 @@ public class fileUtil {
         return result;
     }
 
+    /**
+     * Saves an array of User objects to a file.
+     *
+     * @param filename the name of the file to write to
+     * @param users the array of User objects to save
+     */
     public static void saveUsers(String filename, User[] users) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for (User u : users) {
@@ -98,6 +126,12 @@ public class fileUtil {
         }
     }
 
+    /**
+     * Saves an array of Agent objects to a file.
+     *
+     * @param filename the name of the file to write to
+     * @param agents the array of Agent objects to save
+     */
     public static void saveAgents(String filename, Agent[] agents) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for (Agent a : agents) {
@@ -108,6 +142,12 @@ public class fileUtil {
         }
     }
 
+    /**
+     * Saves an array of Ticket objects to a file.
+     *
+     * @param filename the name of the file to write to
+     * @param tickets the array of Ticket objects to save
+     */
     public static void saveTickets(String filename, Ticket[] tickets) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
             for (Ticket t : tickets) {

@@ -7,10 +7,19 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 import java.util.UUID;
 
+/**
+ * Provides the user interface for regular users in the Ticket Support System.
+ * Handles ticket creation, viewing, and management for regular users.
+ */
 public class UserMenu {
 
     private static final Scanner keyboard = new Scanner(System.in);
 
+    /**
+     * Displays the main menu for regular users and handles their interactions.
+     *
+     * @param username the username of the logged-in user
+     */
     public static void show(String username) {
         while (true) {
             System.out.println("\n👤 Welcome, " + username + " (User)");
@@ -39,6 +48,12 @@ public class UserMenu {
         }
     }
 
+    /**
+     * Creates a new ticket for the user.
+     * Prompts for issue description and priority level.
+     *
+     * @param username the username of the ticket creator
+     */
     private static void createTicket(String username) {
         System.out.print("Enter a short description of your issue: ");
         String description = keyboard.nextLine();
@@ -60,6 +75,12 @@ public class UserMenu {
         System.out.println("✅ Ticket created successfully. ID: " + id);
     }
 
+    /**
+     * Displays all tickets created by the user.
+     * Shows ticket ID, description, priority, and status.
+     *
+     * @param username the username of the user whose tickets to display
+     */
     private static void viewMyTickets(String username) {
         DynamicArray<Ticket> allTickets = MainMenu.getTickets();
         boolean found = false;
@@ -78,6 +99,12 @@ public class UserMenu {
         }
     }
 
+    /**
+     * Displays detailed information about a specific ticket.
+     * Verifies that the ticket belongs to the requesting user.
+     *
+     * @param username the username of the user requesting ticket details
+     */
     private static void viewTicketById(String username) {
         System.out.print("Enter ticket ID: ");
         String ticketId = keyboard.nextLine();
