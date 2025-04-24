@@ -3,6 +3,7 @@ package util;
 import java.util.Iterator;
 
 /**
+ * Day 2: Implemented core data structure - DynamicArray
  * A dynamic array implementation that automatically resizes when needed.
  * This class provides similar functionality to ArrayList but with a custom implementation.
  *
