@@ -6,10 +6,19 @@ import util.DynamicArray;
 
 import java.util.Scanner;
 
+/**
+ * Provides the user interface for agents in the Ticket Support System.
+ * Handles ticket assignment, management, and resolution for agents.
+ */
 public class AgentMenu {
 
     private static final Scanner keyboard = new Scanner(System.in);
 
+    /**
+     * Displays the main menu for agents and handles their interactions.
+     *
+     * @param agentUsername the username of the logged-in agent
+     */
     public static void show(String agentUsername) {
         Agent agent = MainMenu.getAgents().get(agentUsername);
 
@@ -44,6 +53,12 @@ public class AgentMenu {
         }
     }
 
+    /**
+     * Displays all tickets currently assigned to the agent.
+     * Shows ticket ID, description, and status.
+     *
+     * @param agent the agent whose tickets to display
+     */
     private static void viewAssignedTickets(Agent agent) {
         DynamicArray<Ticket> open = agent.getOpenTickets();
         if (open.size() == 0) {
@@ -58,6 +73,12 @@ public class AgentMenu {
         }
     }
 
+    /**
+     * Closes a ticket that is assigned to the agent.
+     * Moves the ticket from open to closed status.
+     *
+     * @param agent the agent closing the ticket
+     */
     private static void closeTicket(Agent agent) {
         System.out.print("Enter the ticket ID to close: ");
         String id = keyboard.nextLine();
@@ -76,6 +97,12 @@ public class AgentMenu {
         System.out.println("❌ Ticket not found in your assigned open tickets.");
     }
 
+    /**
+     * Displays all tickets that have been closed by the agent.
+     * Shows ticket ID and description.
+     *
+     * @param agent the agent whose closed tickets to display
+     */
     private static void viewClosedTickets(Agent agent) {
         DynamicArray<Ticket> closed = agent.getClosedTickets();
         if (closed.size() == 0) {
@@ -90,6 +117,13 @@ public class AgentMenu {
         }
     }
 
+    /**
+     * Automatically assigns the highest priority unassigned ticket to the agent.
+     * Updates ticket status and adds it to the agent's assigned tickets.
+     *
+     * @param agent the agent to assign the ticket to
+     * @param agentUsername the username of the agent
+     */
     private static void autoAssignTicket(Agent agent, String agentUsername) {
         DynamicArray<Ticket> all = MainMenu.getTickets();
         Ticket topTicket = null;

@@ -1,7 +1,9 @@
 package util;
 
 /**
- * An implementation of a HashMap using collision chaining with DynamicArray.
+ * Day 3: Implemented HashMap for efficient key-value storage
+ * A custom implementation of a hash map data structure.
+ * This class provides O(1) average case complexity for insertions and lookups.
  *
  * @param <K> the type of keys
  * @param <V> the type of values

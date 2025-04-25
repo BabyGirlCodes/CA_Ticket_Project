@@ -9,6 +9,10 @@ import util.fileUtil;
 
 import java.util.Scanner;
 
+/**
+ * Main menu class for the Ticket Support System.
+ * Handles the initial program flow, user authentication, and data persistence.
+ */
 public class MainMenu {
 
     private static final Scanner keyboard = new Scanner(System.in);
@@ -17,6 +21,12 @@ public class MainMenu {
     private static HashMap<String, Agent> agents;
     private static DynamicArray<Ticket> tickets;
 
+    /**
+     * Main entry point for the Ticket Support System.
+     * Loads data, handles user authentication, and directs to appropriate menu.
+     *
+     * @param args command line arguments (not used)
+     */
     public static void main(String[] args) {
         loadData();
 
@@ -40,15 +50,31 @@ public class MainMenu {
         saveData();
         System.out.println("👋 Exiting. Goodbye!");
     }
+
+    /**
+     * Returns the collection of all tickets in the system.
+     *
+     * @return the DynamicArray containing all tickets
+     */
     public static DynamicArray<Ticket> getTickets() {
         return tickets;
     }
+
+    /**
+     * Returns the map of all agents in the system.
+     *
+     * @return the HashMap containing all agents
+     */
     public static util.HashMap<String, entities.Agent> getAgents() {
         return agents;
     }
 
-
-
+    /**
+     * Handles the login and registration process.
+     * Provides options for login, registration, and exit.
+     *
+     * @return the username of the authenticated user, or null if user chooses to exit
+     */
     private static String handleLogin() {
         while (true) {
             System.out.println("\n1. Login");
@@ -105,6 +131,10 @@ public class MainMenu {
         }
     }
 
+    /**
+     * Loads user, agent, and ticket data from text files.
+     * Initializes the system's data structures with the loaded data.
+     */
     private static void loadData() {
         users = new HashMap<>();
         for (User u : fileUtil.readUsers("users.txt")) {
@@ -124,6 +154,10 @@ public class MainMenu {
         System.out.println("✅ Data loaded from text files.");
     }
 
+    /**
+     * Saves the current state of user, agent, and ticket data to text files.
+     * Ensures data persistence between program sessions.
+     */
     private static void saveData() {
         Object[] userObjs = users.getValues();
         User[] userArr = new User[userObjs.length];
