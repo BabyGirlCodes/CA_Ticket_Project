@@ -1,7 +1,7 @@
 package util;
 
+import entities.User;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 
@@ -9,7 +9,7 @@ public class HashMapTest {
 
     @Test
     void testPutAndGet() {
-        HashMap<String, Integer> map = new HashMap<>();
+        HashMap map = new HashMap();
         map.put("one", 1);
         map.put("two", 2);
 
@@ -20,7 +20,7 @@ public class HashMapTest {
 
     @Test
     void testUpdateValue() {
-        HashMap<String, Integer> map = new HashMap<>();
+        HashMap map = new HashMap();
         map.put("a", 100);
         map.put("a", 200);  // update value
 
@@ -29,7 +29,7 @@ public class HashMapTest {
 
     @Test
     void testContainsKey() {
-        HashMap<String, String> map = new HashMap<>();
+        HashMap map = new HashMap();
         map.put("hello", "world");
 
         assertTrue(map.containsKey("hello"));
@@ -38,7 +38,7 @@ public class HashMapTest {
 
     @Test
     void testRemove() {
-        HashMap<String, Integer> map = new HashMap<>();
+        HashMap map = new HashMap();
         map.put("x", 10);
         map.put("y", 20);
 
@@ -49,7 +49,7 @@ public class HashMapTest {
 
     @Test
     void testIsEmptyAndSize() {
-        HashMap<String, String> map = new HashMap<>();
+        HashMap map = new HashMap();
 
         assertTrue(map.isEmpty());
         map.put("item", "value");
@@ -59,7 +59,7 @@ public class HashMapTest {
 
     @Test
     void testGetKeys() {
-        HashMap<String, Integer> map = new HashMap<>();
+        HashMap map = new HashMap();
         map.put("a", 1);
         map.put("b", 2);
 
@@ -71,7 +71,7 @@ public class HashMapTest {
 
     @Test
     void testGetValues() {
-        HashMap<String, String> map = new HashMap<>();
+        HashMap map = new HashMap();
         map.put("k1", "v1");
         map.put("k2", "v2");
 
@@ -83,7 +83,7 @@ public class HashMapTest {
 
     @Test
     void testValidateKey_NullKey() {
-        HashMap<String, String> map = new HashMap<>();
+        HashMap map = new HashMap();
         assertThrows(IllegalArgumentException.class, () -> map.put(null, "value"));
         assertThrows(IllegalArgumentException.class, () -> map.get(null));
         assertThrows(IllegalArgumentException.class, () -> map.remove(null));
